@@ -2803,13 +2803,22 @@ input, select, textarea {
 			}
 
 /* Icons */
+	.actions{
+		display: flex;
+        justify-content: center;
+	}
+	.name{
+        display: flex;
+        justify-content: center;
+	}
 
 	ul.icons {
 		cursor: default;
 		list-style: none;
 		padding-left: 0;
-		position: relative;
-		left: 800%;
+        display: flex;
+        justify-content: center;
+
 	}
 
 		ul.icons li {
