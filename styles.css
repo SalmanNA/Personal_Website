@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.section input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.item-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.book-item, .member-item, .loan-item {
+    background-color: #fafafa;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    transition: box-shadow 0.3s ease;
+}
+
+.book-item:hover, .member-item:hover, .loan-item:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-item h3, .member-item h3, .loan-item p {
+    margin: 0 0 5px 0;
+    color: #555555;
+}
+
+.book-item p, .member-item p {
+    margin: 0;
+    color: #777777;
+}
