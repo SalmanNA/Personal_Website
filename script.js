@@ -6,6 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const loanList = document.getElementById('loanList');
     const loanSearchInput = document.getElementById('loanSearchInput');
 
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            button.classList.add('active');
+            document.getElementById(button.dataset.tab).classList.add('active');
+        });
+    });
+
     async function fetchData(url) {
         const response = await fetch(url);
         return response.json();
@@ -20,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bookList.innerHTML = '';
         books.forEach(book => {
             const bookItem = document.createElement('div');
-            bookItem.className = 'book-item';
+            bookItem.className = 'item';
             bookItem.innerHTML = `
                 <h3>${book.Title}</h3>
                 <p>by ${book.Author}</p>
@@ -35,13 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
         memberList.innerHTML = '';
         members.forEach(member => {
             const memberItem = document.createElement('div');
-            memberItem.className = 'member-item';
+            memberItem.className = 'item';
             memberItem.innerHTML = `
                 <h3>${member.Name}</h3>
                 <p>Member ID: ${member.MemberID}</p>
-                <p>Member Name: ${member.Name}</p>
-                <p>Member Email: ${member.Email}</p>
-                <p>Membership Date: ${formatDateString(member.MembershipDate)}</p>
+                <p>Email: ${member.Email}</p>
+                <p>Joined: ${formatDateString(member.MembershipDate)}</p>
             `;
             memberList.appendChild(memberItem);
         });
@@ -51,11 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
         loanList.innerHTML = '';
         loans.forEach(loan => {
             const loanItem = document.createElement('div');
-            loanItem.className = 'loan-item';
+            loanItem.className = 'item';
             loanItem.innerHTML = `
-                <h3>Book: ${loan.BookTitle}</h3>
-                <p>Member: ${loan.MemberName}</p>
+                <h3>Member: ${loan.MemberName}</h3>
                 <p>Loan ID: ${loan.LoanID}</p>
+                <p>Book: ${loan.BookTitle}</p>
                 <p>Loan Date: ${formatDateString(loan.LoanDate)}</p>
                 <p>Return Date: ${formatDateString(loan.ReturnDate)}</p>
             `;
@@ -81,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterMembers() {
         const searchText = memberSearchInput.value.toLowerCase();
         fetchData('https://librarydbserver.fly.dev/members').then(members => {
-            const filteredMembers = filterItems(members, searchText, ['Name', 'MemberID', 'Email']);
+            const filteredMembers = filterItems(members, searchText, ['Name', 'Email']);
             displayMembers(filteredMembers);
         });
     }

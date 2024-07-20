@@ -1,70 +1,68 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
 .container {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
     max-width: 800px;
-    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.section {
-    margin-bottom: 30px;
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tab-button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }
 
 .section h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333333;
+    margin-top: 0;
 }
 
-.section input {
+input[type="text"] {
     width: 100%;
     padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #cccccc;
     margin-bottom: 20px;
-    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .item-list {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
 }
 
-.book-item, .member-item, .loan-item {
-    background-color: #fafafa;
-    padding: 15px;
-    border: 1px solid #dddddd;
-    border-radius: 4px;
-    transition: box-shadow 0.3s ease;
-}
-
-.book-item:hover, .member-item:hover, .loan-item:hover {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.book-item h3, .member-item h3, .loan-item p {
-    margin: 0 0 5px 0;
-    color: #555555;
-}
-
-.book-item p, .member-item p {
-    margin: 0;
-    color: #777777;
+.item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }

@@ -8,19 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <div class="section">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="books">Books</button>
+            <button class="tab-button" data-tab="members">Members</button>
+            <button class="tab-button" data-tab="loans">Book Loans</button>
+        </div>
+
+        <div class="tab-content active" id="books">
             <h2>Books</h2>
             <input type="text" id="searchInput" placeholder="Search books...">
             <div id="bookList" class="item-list"></div>
         </div>
 
-        <div class="section">
+        <div class="tab-content" id="members">
             <h2>Members</h2>
             <input type="text" id="memberSearchInput" placeholder="Search members...">
             <div id="memberList" class="item-list"></div>
         </div>
 
-        <div class="section">
+        <div class="tab-content" id="loans">
             <h2>Book Loans</h2>
             <input type="text" id="loanSearchInput" placeholder="Search loans...">
             <div id="loanList" class="item-list"></div>
