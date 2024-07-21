@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filterBooks() {
         const searchText = searchInput.value.toLowerCase();
-        fetchData('https://librarydbserver.fly.dev/books').then(books => {
+        fetchData('http://131.94.132.8:3000/books').then(books => {
             const filteredBooks = filterItems(books, searchText, ['Title', 'Author', 'Genre']);
             displayBooks(filteredBooks);
         });
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filterMembers() {
         const searchText = memberSearchInput.value.toLowerCase();
-        fetchData('https://librarydbserver.fly.dev/members').then(members => {
+        fetchData('https://131.94.132.8:3000/members').then(members => {
             const filteredMembers = filterItems(members, searchText, ['Name', 'Email']);
             displayMembers(filteredMembers);
         });
@@ -101,9 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterLoans() {
         const searchText = loanSearchInput.value.toLowerCase();
         Promise.all([
-            fetchData('https://librarydbserver.fly.dev/loans'),
-            fetchData('https://librarydbserver.fly.dev/members'),
-            fetchData('https://librarydbserver.fly.dev/books')
+            fetchData('https://131.94.132.8:3000/loans'),
+            fetchData('https://131.94.132.8:3000/members'),
+            fetchData('http://131.94.132.8:3000/books')
         ]).then(([loans, members, books]) => {
             const loansWithDetails = loans.map(loan => {
                 const member = members.find(member => member.MemberID === loan.MemberID);
